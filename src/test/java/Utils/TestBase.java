@@ -32,7 +32,7 @@ public class TestBase {
         else {
             throw new RuntimeException("Unrecognized OS name - "+ os);
         }
-        System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+driverPath);
+        System.setProperty("webdriver.chrome.driver", driverPath);
         this.driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(TIMEOUT_IN_SECONDS));
