@@ -29,12 +29,11 @@ public class TestBase {
 
         String os = System.getProperty("os.name").toLowerCase();
         driverPath = "driver/win/yandexdriver.exe";
-
+        System.setProperty("webdriver.chrome.driver", driverPath);
         if(os.contains("nux")){
             chromeOptions.setBinary("driver/unix/yandexdriver");
             driver = new ChromeDriver(chromeOptions);
         } else if (os.contains("windows")) {
-            System.setProperty("webdriver.chrome.driver", driverPath);
             driver = new ChromeDriver();
         }
         else {
