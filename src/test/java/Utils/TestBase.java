@@ -20,7 +20,7 @@ public class TestBase {
 
 
     public void getDriverAndLogin () {
-        System.setProperty("webdriver.chrome.driver", "driver/yandexdriver.exe");
+        System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+"/driver/yandexdriver.exe");
         this.driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(TIMEOUT_IN_SECONDS));
