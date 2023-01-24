@@ -25,9 +25,9 @@ public class TestBase {
         String os = System.getProperty("os.name").toLowerCase();
 
         if(os.contains("windows")){
-            driverPath = "/driver/win/yandexdriver.exe";
+            driverPath = "driver/win/yandexdriver.exe";
         } else if (os.contains("nux")) {
-            driverPath = "/driver/unix/yandexdriver";
+            driverPath = "driver/unix/yandexdriver";
         }
         else {
             throw new RuntimeException("Unrecognized OS name - "+ os);
