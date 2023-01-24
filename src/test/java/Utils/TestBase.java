@@ -18,6 +18,7 @@ public class TestBase {
     public static final String USERNAME ="frolov";
     public static final String PASSWORD = "1";
     String driverPath;
+    String binaryPath;
 
     public static final int TIMEOUT_IN_SECONDS = 10;
     public HubPage hubPage;
@@ -25,18 +26,19 @@ public class TestBase {
 
     public void getDriverAndLogin () {
         ChromeOptions chromeOptions = new ChromeOptions();
+
         String os = System.getProperty("os.name").toLowerCase();
         driverPath = "driver/win/yandexdriver.exe";
-        /*if(os.contains("windows")){
-            ;
-        } else if (os.contains("nux")) {
-            driverPath = "driver/unix/yandexdriver";
+        System.setProperty("webdriver.chrome.driver", driverPath);
+        if(os.contains("nux")){
+            chromeOptions.setBinary("driver/unix/yandexdriver");
+            driver = new ChromeDriver(chromeOptions);
+        } else if (os.contains("windows")) {
+            driver = new ChromeDriver();
         }
         else {
-            throw new RuntimeException("Unrecognized OS name - "+ os);
-        }*/
-        System.setProperty("webdriver.chrome.driver", driverPath);
-        this.driver = new ChromeDriver();
+            throw new RuntimeException("unrecognized Os - " + os);
+        }
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(TIMEOUT_IN_SECONDS));
         driver.get(MAIN_URL);
